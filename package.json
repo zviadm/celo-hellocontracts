@@ -1,7 +1,10 @@
 {
   "name": "celo-hellocontracts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example contracts that integrate with Celo core contracts",
+  "repository": {
+    "url": "https://github.com/zviadm/celo-hellocontracts"
+  },
   "dependencies": {},
   "devDependencies": {
     "@celo/contractkit": "^0.4.18",
@@ -19,6 +22,6 @@
     "test": "npx tsc -p ./tsconfig.test.json && truffle test",
     "ganache": "npx celo-devchain --port 7545 --core v1"
   },
-  "author": "",
+  "author": "Zviad Metreveli",
   "license": "ISC"
 }
