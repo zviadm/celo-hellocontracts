@@ -17,7 +17,7 @@
     "typescript": "^4.0.5"
   },
   "scripts": {
-    "compile": "truffle compile && typechain --target=truffle-v5 'build/contracts/*.json'",
+    "compile": "truffle compile && npx typechain --target=truffle-v5 'build/contracts/*.json'",
     "migrate": "npm run compile && npx tsc -b ./tsconfig.migrate.json && truffle migrate --reset",
     "test": "npx tsc -b ./tsconfig.test.json && truffle test --bail",
     "ganache": "npx celo-devchain --port 7545 --core v1"
