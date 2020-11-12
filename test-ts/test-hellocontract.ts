@@ -1,5 +1,5 @@
 import { newKit } from "@celo/contractkit"
-import { increaseTime } from "celo-devchain"
+import { Provider, increaseTime } from "celo-devchain"
 
 const HelloContract = artifacts.require("HelloContract");
 
@@ -19,8 +19,9 @@ contract('HelloContract', (accounts) => {
 		const instance = await HelloContract.deployed()
 
 		// Allow HelloContract to transfer 10 CELO from `a0`, and call Lock function on it.
-		let tx = await goldToken.increaseAllowance(instance.address, 10e18.toFixed(0))
-		await tx.sendAndWaitForReceipt({from: a0} as any)
+		await goldToken
+			.increaseAllowance(instance.address, 10e18.toFixed(0))
+			.sendAndWaitForReceipt({from: a0} as any)
 		await instance.Lock(10e18.toFixed(0), {from: a0})
 
 		// Anyone can call Unlock.
@@ -33,7 +34,7 @@ contract('HelloContract', (accounts) => {
 		assert.equal(pendings[1].value.toNumber(), 7e18)
 
 		// Make sure unlock period passes.
-		await increaseTime(kit.web3.currentProvider as any, 3 * 24 * 3600 + 1)
+		await increaseTime(kit.web3.currentProvider as Provider, 3 * 24 * 3600 + 1)
 
 		// Anyone can withdraw anything..., `a1` gets +7 CELO, `a2` gets +3 CELO.
 		await instance.Withdraw(1, {from: a1})

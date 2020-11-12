@@ -37,7 +37,7 @@ contract HelloContract {
 	}
 
 	function Withdraw(uint256 idx) external {
-		(uint256[] memory values, uint256[] memory timestamps) = _LockedGold.getPendingWithdrawals(address(this));
+		(uint256[] memory values, ) = _LockedGold.getPendingWithdrawals(address(this));
 		_LockedGold.withdraw(idx);
 		bool success = _GoldToken.transfer(msg.sender, values[idx]);
 		assert(success);
