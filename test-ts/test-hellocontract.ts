@@ -69,8 +69,8 @@ contract('HelloContract', (accounts) => {
 
 		const contractCELO = await goldToken.balanceOf(helloContract.address)
 		const contractLockedCELO = await lockedGold.getAccountTotalLockedGold(helloContract.address)
-		assert.equal(contractCELO.toNumber(), 0)
-		assert.equal(contractLockedCELO.toNumber(), 0)
+		assert.isTrue(contractCELO.eq(0))
+		assert.isTrue(contractLockedCELO.eq(0))
 
 		const balanceA1 = await goldToken.balanceOf(a1)
 		const balanceA2 = await goldToken.balanceOf(a2)
