@@ -37,7 +37,7 @@ we are treating each file as a single large test.
 using the supplied `accounts` directly. This will make it easier to avoid any core contract state conflicts
 between test runs.
 ```
-	const addr = await web3.eth.personal.newAccount("")
-	await web3.eth.personal.unlockAccount(addr, "", 0)
+const addr = await web3.eth.personal.newAccount("")
+await web3.eth.personal.unlockAccount(addr, "", 0)
 ```
 
