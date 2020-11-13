@@ -16,9 +16,8 @@ Before running migrations or tests, you need to start ganache:
 > npm run ganache
 ```
 
-Run migrations and run tests:
+Run tests:
 ```
-> npm run migrate
 > npm test
 ```
 
